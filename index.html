@@ -5,140 +5,222 @@
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
 <html>
-	<head>
-		<title>Les trésors cachés</title>
-		<meta charset="utf-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
-		<link rel="stylesheet" href="assets/css/main.css" />
-		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
-	</head>
-	<body class="is-preload">
 
-		<!-- Wrapper -->
-			<div id="wrapper" class="divided">
+<head>
+  <title>Les trésors cachés</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+  <link rel="stylesheet" href="assets/css/main.css" />
+  <noscript>
+    <link rel="stylesheet" href="assets/css/noscript.css" />
+  </noscript>
+  <style>
+    /* Popup */
+    .popup-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 1000;
+    }
 
-				<!-- One -->
-					<section class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
-						<div class="content">
-							<h1>Les trésors cachés</h1>
-							<p class="major">Doris, une étudiante passionnée par la découverte et l’aventure, se rend dans une boutique d’antiquités. Elle tombe nez à nez avec un magnifique vase assez mystérieux… Attirée par celui-ci, elle décide de l’acheter. En l’exposant chez elle, elle le fait tomber ce qui fait apparaître une carte au trésors. Elle remarque la carte de Bordeaux comprenant plusieurs croix. C’est alors sans aucuns doute, qu’elle décide de partir explorer la ville de Bordeaux pour y découvrir toute son histoire.</p>
-							<ul class="actions stacked">
-								<li><a href="#first" class="button big wide smooth-scroll-middle">Voir les trésors cachés</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/map.jpg" alt="" style="object-fit: cover;" />
-						</div>
-					</section>
+    .popup-content {
+      position: relative;
+      margin: 10% auto;
+      width: 80%;
+      max-width: 800px;
+      text-align: center;
+    }
 
-				<!-- Two -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in" id="first">
-						<div class="content">
-							<h2>Statue de la Liberté</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/statue.jpeg" alt="" />
-						</div>
-					</section>
+    .popup-close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 45px;
+      cursor: pointer;
+    }
 
-				<!-- Three -->
-					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Château trompette</h2>
-							<p></p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/chateau-trompette.png" alt="" />
-						</div>
-					</section>
+    #popupImage {
+      width: 100%;
+      height: auto;
+      max-height: 80vh;
+    }
 
-				<!-- Four -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Pilier de Tutelle</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/pilier-de-tutelle.JPG" alt="" />
-						</div>
-					</section>
+    /* Effet de zoom sur la carte au hover */
+    .image {
+      overflow: hidden;
+      width: 100%;
+      height: auto;
+    }
 
-          <!-- Five -->
-					<section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>CAPC</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/spotlight02.jpg" alt="" />
-						</div>
-					</section>
+    .image .map {
+      transition: transform 0.3s ease;
+      width: 100%;
+      height: auto;
+    }
 
-          <!-- Six -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Darwin</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/spotlight03.jpg" alt="" />
-						</div>
-					</section>
+    .image .map:hover {
+      transform: scale(1.1);
+      cursor: pointer;
+    }
+  </style>
+</head>
 
-          <!-- Seven -->
-          <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Catacombes</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/spotlight02.jpg" alt="" />
-						</div>
-					</section>
+<body class="is-preload">
 
-          <!-- Seven -->
-					<section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
-						<div class="content">
-							<h2>Le Fort du Hâ</h2>
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
-							<ul class="actions stacked">
-								<li><a href="#" class="button">Découvrir</a></li>
-							</ul>
-						</div>
-						<div class="image">
-							<img src="images/le-fort-du-ha.jpg" alt="" />
-						</div>
-					</section>
+  <!-- Wrapper -->
+  <div id="wrapper" class="divided">
 
-			</div>
+    <!-- One -->
+    <section
+      class="banner style1 orient-left content-align-left image-position-right fullscreen onload-image-fade-in onload-content-fade-right">
+      <div class="content">
+        <h1>Les trésors cachés</h1>
+        <p class="major">Doris, une étudiante passionnée par la découverte et l’aventure, se rend dans une boutique
+          d’antiquités. Elle tombe nez à nez avec un magnifique vase assez mystérieux… Attirée par celui-ci, elle décide
+          de l’acheter. En l’exposant chez elle, elle le fait tomber ce qui fait apparaître une carte au trésors. Elle
+          remarque la carte de Bordeaux comprenant plusieurs croix. C’est alors sans aucuns doute, qu’elle décide de
+          partir explorer la ville de Bordeaux pour y découvrir toute son histoire.</p>
+        <ul class="actions stacked">
+          <li><a href="#first" class="button big wide smooth-scroll-middle">Voir les trésors cachés</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img class="map" src="images/map.jpg" alt="" style="object-fit: cover;" id="imageToPopup" />
+      </div>
+    </section>
 
-		<!-- Scripts -->
-			<script src="assets/js/jquery.min.js"></script>
-			<script src="assets/js/jquery.scrollex.min.js"></script>
-			<script src="assets/js/jquery.scrolly.min.js"></script>
-			<script src="assets/js/browser.min.js"></script>
-			<script src="assets/js/breakpoints.min.js"></script>
-			<script src="assets/js/util.js"></script>
-			<script src="assets/js/main.js"></script>
+    <!-- Popup Structure (placée à l'extérieur des sections pour éviter les conflits) -->
+    <div id="imagePopup" class="popup-overlay">
+      <span class="popup-close">&times;</span>
+      <div class="popup-content">
+        <img src="images/map-large.JPEG" alt="Image Enlarged" id="popupImage" />
+      </div>
+    </div>
 
-	</body>
+
+    <!-- Two -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in"
+      id="first">
+      <div class="content">
+        <h2>Statue de la Liberté</h2>
+        <p>À plusieurs milliers de kilomètres de New York, la statue de la Liberté brandit aussi sa flamme à Bordeaux. Loin des 93 mètres de haut de sa cousine américaine, le monument trône place Picard.  Un symbole de liberté et de combativité qui disparut en 1941 sous la domination allemande. Leur objectif étant de réduire les espoirs du peuple bordelais, mais aussi de récupérer les métaux en faisant fondre la statue.</p>
+        <ul class="actions stacked">
+          <li><a href="https://youtu.be/7E04f7KOwvE" class="button" target="_blank">Découvrir</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="images/statue.jpeg" alt="" />
+      </div>
+    </section>
+
+    <!-- Three -->
+    <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+      <div class="content">
+        <h2>Château trompette</h2>
+        <p>Le Château Trompette était une forteresse construite en 1453 par Charles VII après la guerre de Cent Ans, pour affirmer l’autorité royale sur Bordeaux, récemment reprise des Anglais. Stratégiquement situé près de la Garonne, il servait à surveiller la ville et prévenir toute révolte des Bordelais. Cette puissante citadelle, avec ses remparts et tours, représentait un symbole de domination française. Au fil des siècles, le château perdit sa fonction militaire et fut démantelé au début du XIXe siècle. Son emplacement est aujourd'hui occupé par la vaste place des Quinconces. Quelques vestiges subsistent parfois sous terre, mais le château vit surtout à travers l'histoire.</p>
+        <ul class="actions stacked">
+          <li><a href="https://www.youtube.com/watch?v=Yy_lnot1Zsg" class="button" target="_blank">Découvrir</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="images/chateau-trompette.png" alt="" />
+      </div>
+    </section>
+
+    <!-- Four -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+      <div class="content">
+        <h2>Pilier de Tutelle</h2>
+        <p>Construites au IIIe siècle, ces colonnes faisaient partie d’un vaste édifice romain. Pendant des siècles, il a été dit qu’il s’agissait d’un temple dédié à la déesse de la fécondité, Tutelle. Mais d’autres historiens suggèrent qu’il pourrait s’agir d’un sanctuaire dédié à Minerve, la déesse de la Sagesse. Cependant, les recherches les plus récentes indiquent que ces piliers étaient peut-être tout autre chose : un monument symbolisant la puissance de Burdigala, capitale de la province romaine d’Aquitaine.</p>
+        <ul class="actions stacked">
+          <li><a href="https://www.youtube.com/watch?v=Yy_lnot1Zsg" class="button" target="_blank">Découvrir</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="images/pilier-de-tutelle.JPG" alt="" />
+      </div>
+    </section>
+
+    <!-- Five -->
+    <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+      <div class="content">
+        <h2>Catacombes</h2>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi id ante sed ex pharetra lacinia sit amet vel
+          massa. Donec facilisis laoreet nulla eu bibendum. Donec ut ex risus. Fusce lorem lectus, pharetra pretium
+          massa et, hendrerit vestibulum odio lorem ipsum dolor sit amet.</p>
+        <ul class="actions stacked">
+          <li><a href="https://youtu.be/JpEfOA0ORzIq" class="button" target="_blank">Découvrir</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="images/catacombes.jpg" alt="" />
+      </div>
+    </section>
+
+    <!-- Six -->
+    <section class="spotlight style1 orient-right content-align-left image-position-center onscroll-image-fade-in">
+      <div class="content">
+        <h2>Darwin</h2>
+        <p>Darwin, situé sur la rive droite de Bordeaux, est un espace alternatif dédié à l'écologie, l'innovation sociale et culturelle. Installé dans d'anciennes casernes, il abrite des espaces de co-working, des commerces responsables et une ferme urbaine. Ce lieu engagé accueille également des événements créatifs et rassemble une communauté tournée vers la transition écologique.</p>
+        <ul class="actions stacked">
+          <li><a href="images/infographie1.pdf" target="_blank" class="button">Infographie 1</a></li>
+          <li><a href="images/infographie2.pdf" target="_blank" class="button">Infographie 2</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="images/darwin.jpg" alt="" />
+      </div>
+    </section>
+
+    <!-- Seven -->
+    <section class="spotlight style1 orient-left content-align-left image-position-center onscroll-image-fade-in">
+      <div class="content">
+        <h2>Le Fort du Hâ</h2>
+        <p>Le Fort du Hâ est une ancienne forteresse médiévale située au cœur de Bordeaux. Construit au XVe siècle sous l’ordre de Charles VII, il servait à protéger la ville et à affirmer le pouvoir royal face aux menaces extérieures. Aujourd'hui, bien que partiellement conservé, le fort fait partie du palais de justice de Bordeaux et reste un monument emblématique du passé militaire de la ville.</p>
+        <ul class="actions stacked">
+          <li><a href="https://www.youtube.com/watch?v=Yy_lnot1Zsg" class="button" target="_blank">Découvrir</a></li>
+        </ul>
+      </div>
+      <div class="image">
+        <img src="images/le-fort-du-ha.jpg" alt="" />
+      </div>
+    </section>
+  </div>
+
+  <!-- Scripts -->
+  <script src="assets/js/jquery.min.js"></script>
+  <script src="assets/js/jquery.scrollex.min.js"></script>
+  <script src="assets/js/jquery.scrolly.min.js"></script>
+  <script src="assets/js/browser.min.js"></script>
+  <script src="assets/js/breakpoints.min.js"></script>
+  <script src="assets/js/util.js"></script>
+  <script src="assets/js/main.js"></script>
+
+  <script>
+    $(document).ready(function () {
+      // Ouvrir la popup en cliquant sur l'image
+      $("#imageToPopup").click(function () {
+        $("#imagePopup").fadeIn();
+      });
+
+      // Fermer la popup en cliquant sur la croix
+      $(".popup-close").click(function () {
+        $("#imagePopup").fadeOut();
+      });
+
+      // Fermer la popup en cliquant en dehors de l'image
+      $("#imagePopup").click(function (event) {
+        if ($(event.target).is("#popupImage") === false) {
+          $("#imagePopup").fadeOut();
+        }
+      });
+    });
+  </script>
+</body>
+
 </html>
